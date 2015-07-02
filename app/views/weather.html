@@ -1,0 +1,70 @@
+
+<div ng-controller="WeatherCtrl">
+
+  <div class="well">
+    
+    <p>Please choose a city:</p>
+
+  <select class="form-control" ng-change="changeCity()" ng-model="myOption">
+    <option value="London,UK">London, UK</option>
+    <option value="Paris,FR">Paris, FR</option>
+    <option value="New%20York,US">New York, US</option>
+    <option value="Sydney,AU">Sydney, AU</option>
+    <option value="Bogota,CO">Bogota, CO</option>
+  </select>
+  </div>
+
+  <h4 ng-show="city_name">Current weather in <b>{{city_name}}</b>
+    <sup><img src="{{ icon }}" alt="" width="32" height="32" ng-show="icon" /></sup></h4>
+
+<div class="table-responsive">          
+  <table class="table table-striped">
+    <colgroup>
+            <col class="col-md-1">
+            <col class="col-md-1">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>Current conditions</td>
+        <td ng-show="temp">{{ conditions }}</td>
+      </tr>
+      <tr>
+        <td>Longitude | Latitude</td>
+        <td ng-show="temp">{{ lon }}&deg; | {{ lat }}&deg;</td>
+      </tr>
+      <tr>
+        <td>Current temperature</td>
+        <td ng-show="temp">{{ temp | kelvinToCelsius | number:1 }}&deg;C</td>
+      </tr>
+      <tr>
+        <td>Min temperature</td>
+        <td ng-show="temp">{{ min_temp | kelvinToCelsius | number:1}}&deg;C</td>
+      </tr>
+      <tr>
+        <td>Max temperature</td>
+        <td ng-show="temp">{{ max_temp | kelvinToCelsius | number:1 }}&deg;C</td>
+      </tr>
+      <tr>
+        <td>Atmospheric pressure</td>
+        <td ng-show="temp">{{ pressure }}</td>
+      </tr>
+      <tr>
+        <td>Humidity</td>
+        <td ng-show="temp">{{ humidity }}%</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- Name of the city
+  • Location (longitude and latitude)
+  • The current weather conditions
+  • Icon for the weather conditions
+  • The temperate and temperature range
+  • The current atmospheric pressure
+  • The current humidity
+
+-->
+
+
